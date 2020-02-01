@@ -1,12 +1,28 @@
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import { createBrowserHistory } from 'history';
+import rootStore from './stores/rootStore';
+import App from './views/App';
+import environment from 'environment';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+(async (window) => {
+  const initialState = {};
+  const history = createBrowserHistory({ basename: environment.route.baseRoute });
+  const store = rootStore(initialState, history);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  const rootEl = document.getElementById('root');
+  const render = (Component, el) => {
+    ReactDOM.render(
+      <Provider store={store}>
+        <Component history={history} dispatch={store.dispatch} />
+      </Provider>,
+      el
+    );
+  };
+
+  render(App, rootEl);
+})(window);
