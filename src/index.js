@@ -1,6 +1,8 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
+import './index.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -13,6 +15,7 @@ import environment from 'environment';
   const initialState = {};
   const history = createBrowserHistory({ basename: environment.route.baseRoute });
   const store = rootStore(initialState, history);
+  console.log(store.getState());
 
   const rootEl = document.getElementById('root');
   const render = (Component, el) => {

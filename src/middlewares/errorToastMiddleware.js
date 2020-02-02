@@ -1,5 +1,5 @@
-import ToastStatusEnum from '../constants/ToastStatus';
-import * as ToastsAction from '../stores/toasts/ToastsAction';
+import ToastStatusEnum from '../constants/ToastStatusEnum';
+import ToastsAction from '../stores/toasts/ToastsAction';
 
 export default function errorToastMiddleware() {
   return (store) => (next) => (action) => {

@@ -1,17 +1,17 @@
-import * as ToastsAction from './ToastsAction';
-import baseReducer from '../../utils/BaseReducer';
+import ToastsAction from './ToastsAction';
+import BaseReducer from '../../utils/BaseReducer';
 
-export const initialState = {
-  items: [],
-};
+export default class ToastsReducer extends BaseReducer {
+  initialState = {
+    items: [],
+  };
 
-const toastsReducer = baseReducer(initialState, {
   [ToastsAction.ADD_TOAST](state, action) {
     return {
       ...state,
       items: [...state.items, action.payload],
     };
-  },
+  }
 
   [ToastsAction.REMOVE_TOAST](state, action) {
     const toastId = action.payload;
@@ -20,7 +20,5 @@ const toastsReducer = baseReducer(initialState, {
       ...state,
       items: state.items.filter((model) => model.id !== toastId),
     };
-  },
-});
-
-export default toastsReducer; 
+  }
+}

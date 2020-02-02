@@ -1,16 +1,19 @@
 import HttpErrorResponseModel from '../models/HttpErrorResponseModel';
+import ToastsAction from '../stores/toasts/ToastsAction';
+import ToastStatusEnum from 'constants/ToastStatusEnum';
 
-export async function createThunkEffect(dispatch, actionType, effect, ...args) {
-  dispatch(createAction(actionType));
+export default class ActionUtility {
+  static async createThunkEffect(dispatch, actionType, effect, ...args) {
+    dispatch(ActionUtility.createAction(actionType));
 
-  const model = await effect(...args);
-  const isError = model instanceof HttpErrorResponseModel;
+    const model = await effect(...args);
+    const isError = model instanceof HttpErrorResponseModel;
+    dispatch(ActionUtility.createAction(`${actionType}_FINISHED`, model, isError));
 
-  dispatch(createAction(`${actionType}_FINISHED`, model, isError));
+    return model;
+  }
 
-  return model;
-}
-
-export function createAction(type, payload = undefined, error = false, meta = null) {
-  return { type, payload, error, meta };
+  static createAction(type, payload, error = false, meta = null) {
+    return { type, payload, error, meta };
+  }
 }

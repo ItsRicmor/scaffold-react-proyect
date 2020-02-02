@@ -1,13 +1,14 @@
-import * as ActionUtility from '../../utils/ActionUtility';
+import ActionUtility from '../../utils/ActionUtility';
 
-export const REMOVE = 'ErrorAction.REMOVE';
+export default class ErrorAction {
+  static CLEAR_ALL = 'ErrorAction.CLEAR_ALL';
+  static REMOVE = 'ErrorAction.REMOVE';
 
-export function removeById(id) {
-  return ActionUtility.createAction(REMOVE, id);
-}
+  static removeById(id) {
+    return ActionUtility.createAction(ErrorAction.REMOVE, id);
+  }
 
-export const CLEAR_ALL = 'ErrorAction.CLEAR_ALL';
-
-export function clearAll() {
-  return ActionUtility.createAction(CLEAR_ALL);
+  static clearAll() {
+    return ActionUtility.createAction(ErrorAction.CLEAR_ALL);
+  }
 }

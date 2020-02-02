@@ -5,14 +5,14 @@ import environment from './base';
  * You shouldn't have override anything.
  */
 
-const baseApi = 'https://api.tvmaze.com';
+const baseApi = 'https://jsonplaceholder.typicode.com';
 const env = environment(baseApi);
 
 const productionEnv = {
   ...env,
   route: {
     ...env.route,
-    baseRoute: '/scaffold-proyect', 
+    baseRoute: '/scaffold-proyect',
   },
 };
 

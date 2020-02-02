@@ -1,0 +1,17 @@
+.wrapper {
+  text-align: center;
+}
+.header {
+  font-size: 30px;
+  font-family: Helvetica;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  height: 15;
+}
+.items {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr [col-start]);
+  width: 80%;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}

@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import requestingReducer from './requesting/RequestingReducer';
-import errorReducer from './error/ErrorReducer';
-import toastsReducer from './toasts/ToastsReducer';
+import RequestingReducer from './requesting/RequestingReducer';
+import ErrorReducer from './error/ErrorReducer';
+import ToastsReducer from './toasts/ToastsReducer';
+import TodoReducer from './todos/TodoReducer';
 
 export default function rootReducer(history) {
   const reducerMap = {
-    error: errorReducer,
-    requesting: requestingReducer,
+    error: ErrorReducer.reducer,
+    requesting: RequestingReducer.reducer,
     router: connectRouter(history),
-    toasts: toastsReducer,
+    todos: new TodoReducer().reducer,
+    toasts: new ToastsReducer().reducer,
   };
 
-  return combineReducers(reducerMap);
+  return new combineReducers(reducerMap);
 }

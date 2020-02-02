@@ -6,16 +6,13 @@
 export default function baseEnv(baseApi) {
   return {
     route: {
-      baseRoute: ""
+      baseRoute: '',
     },
     api: {
-      cast: `${baseApi}/shows/:showId/cast`,
-      episodes: `${baseApi}/shows/:showId/episodes`,
-      shows: `${baseApi}/shows/:showId`,
-      errorExample: "https://httpstat.us/520"
+      todo: `${baseApi}/todos/:todoId`,
     },
     isProduction: true,
     isDevelopment: false,
-    isTesting: false
+    isTesting: false,
   };
 }

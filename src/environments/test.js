@@ -1,7 +1,6 @@
-  
 import environment from './base';
 
-const baseApi = 'https://api.tvmaze.com';
+const baseApi = 'https://jsonplaceholder.typicode.com';
 const env = environment(baseApi);
 
 const testEnv = {

@@ -1,18 +1,19 @@
-import * as ActionUtility from '../../utils/ActionUtility';
+import ActionUtility from '../../utils/ActionUtility';
 import uuid from 'uuid/v4';
 
-export const ADD_TOAST = 'ToastsAction.ADD_TOAST';
+export default class ToastsAction {
+  static ADD_TOAST = 'ToastsAction.ADD_TOAST';
+  static REMOVE_TOAST = 'ToastsAction.REMOVE_TOAST';
 
-export function add(message, type) {
-  return ActionUtility.createAction(ADD_TOAST, {
-    message,
-    type,
-    id: uuid(),
-  });
-}
+  static add(message, type) {
+    return ActionUtility.createAction(ToastsAction.ADD_TOAST, {
+      message,
+      type,
+      id: uuid(),
+    });
+  }
 
-export const REMOVE_TOAST = 'ToastsAction.REMOVE_TOAST';
-
-export function removeById(toastId) {
-  return ActionUtility.createAction(REMOVE_TOAST, toastId);
+  static removeById(toastId) {
+    return ActionUtility.createAction(ToastsAction.REMOVE_TOAST, toastId);
+  }
 }
